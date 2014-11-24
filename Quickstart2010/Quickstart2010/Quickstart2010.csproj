@@ -43,23 +43,31 @@
       <HintPath>bin\Release\Mogre.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MogreFramework">
+      <HintPath>bin\Release\MogreFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Modules\OgreEventArgs.cs" />
     <Compile Include="Modules\OgreManager.cs" />
     <Compile Include="Modules\ResourceConfig.cs" />
     <Compile Include="Modules\ResourceManager.cs" />
     <Compile Include="Modules\State.cs" />
     <Compile Include="Modules\StateManager.cs" />
-    <Compile Include="MoveDemo.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MoveDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\TurningHead.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

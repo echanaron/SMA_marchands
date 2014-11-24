@@ -4,15 +4,13 @@ using System.Text;
 using Mogre;
 using MogreFramework;
 
-using Quickstart2010.Modules;
-using Quickstart2010.States;
 
-namespace Quickstart2010
+namespace MogreTutorial
 {
 
     public class MoveDemo : OgreWindow
     {
-        public AnimationState mAnimationState = null; //The AnimationState the moving object
+        AnimationState mAnimationState = null; //The AnimationState the moving object
         float mDistance = 0.0f;              //The distance the object has left to travel
         Vector3 mDirection = Vector3.ZERO;   // The direction the object is moving
         Vector3 mDestination = Vector3.ZERO; // The destination the object is moving towards
@@ -20,28 +18,37 @@ namespace Quickstart2010
         float mWalkSpeed = 50.0f;  // The speed at which the object is moving
 
 
-        public override void CreateSceneManager()
+        protected override void CreateSceneManager()
         {
-            //ROBOT
-            Entity ent = Program.mEngine.SceneMgr.CreateEntity("Robot", "robot.mesh");
-            SceneNode node = Program.mEngine.SceneMgr.RootSceneNode.CreateChildSceneNode("HeadNode");
+            // Create SceneManager
+            SceneManager = Root.CreateSceneManager(SceneType.ST_EXTERIOR_CLOSE);
+
+            //Set ambient light
+            SceneManager.AmbientLight = ColourValue.White;
+
+            // Create the Robot entity
+            Entity ent = SceneManager.CreateEntity("Robot", "robot.mesh");
+
+            // Create the Robot's SceneNode
+            SceneNode node = SceneManager.RootSceneNode.CreateChildSceneNode("RobotNode",
+                             new Vector3(0.0f, 0.0f, 0.25f));
             node.AttachObject(ent);
 
             // Create knot objects so we can see movement
-            ent = Program.mEngine.SceneMgr.CreateEntity("Knot1", "knot.mesh");
-            node = Program.mEngine.SceneMgr.RootSceneNode.CreateChildSceneNode("Knot1Node",
+            ent = SceneManager.CreateEntity("Knot1", "knot.mesh");
+            node = SceneManager.RootSceneNode.CreateChildSceneNode("Knot1Node",
                 new Vector3(0.0f, -10.0f, 25.0f));
             node.AttachObject(ent);
             node.Scale(0.1f, 0.1f, 0.1f);
             //
-            ent = Program.mEngine.SceneMgr.CreateEntity("Knot2", "knot.mesh");
-            node = Program.mEngine.SceneMgr.RootSceneNode.CreateChildSceneNode("Knot2Node",
+            ent = SceneManager.CreateEntity("Knot2", "knot.mesh");
+            node = SceneManager.RootSceneNode.CreateChildSceneNode("Knot2Node",
                 new Vector3(550.0f, -10.0f, 50.0f));
             node.AttachObject(ent);
             node.Scale(0.1f, 0.1f, 0.1f);
             //
-            ent = Program.mEngine.SceneMgr.CreateEntity("Knot3", "knot.mesh");
-            node = Program.mEngine.SceneMgr.RootSceneNode.CreateChildSceneNode("Knot3Node",
+            ent = SceneManager.CreateEntity("Knot3", "knot.mesh");
+            node = SceneManager.RootSceneNode.CreateChildSceneNode("Knot3Node",
                 new Vector3(-100.0f, -10.0f, -200.0f));
             node.AttachObject(ent);
             node.Scale(0.1f, 0.1f, 0.1f);
@@ -53,7 +60,7 @@ namespace Quickstart2010
             mWalkList.AddLast(new Vector3(0.0f, 0.0f, 25.0f));
 
             // Set idle animation
-            mAnimationState = Program.mEngine.SceneMgr.GetEntity("Robot").GetAnimationState("Walk");
+            mAnimationState = SceneManager.GetEntity("Robot").GetAnimationState("Idle");
             mAnimationState.Loop = true;
             mAnimationState.Enabled = true;
         }
@@ -62,6 +69,8 @@ namespace Quickstart2010
         {
             base.CreateInputHandler();
             this.Root.FrameStarted += new FrameListener.FrameStartedHandler(FrameStarted);
+
+
         }
 
         protected bool nextLocation()
@@ -71,27 +80,9 @@ namespace Quickstart2010
 
         bool FrameStarted(FrameEvent evt)
         {
-            if (!mWalking)
-            //either we've not started walking or reached a way point
-            {
-                //check if there are places to go
-                if (nextLocation())
-                {
-                    LinkedListNode<Vector3> tmp;
-
-                    //Start the walk animation
-                    mAnimationState = mEntity.GetAnimationState("Walk");
-                    mAnimationState.SetLoop(true);
-                    mAnimationState.SetEnabled(true);
-                    mWalking = true;
-
-                    //Update the destination using the walklist.
-
-                }//if(nextLocation())
-            }
+            //Update the Animation State.
+            mAnimationState.AddTime(evt.timeSinceLastFrame * mWalkSpeed / 20);
             return true;
         }
-
-
     }
 }
