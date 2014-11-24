@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Mogre;
+using MogreFramework;
 
 using Quickstart2010.Modules;
 using Quickstart2010.States;
@@ -9,7 +10,7 @@ using Quickstart2010.States;
 namespace Quickstart2010
 {
 
-    public class MoveDemo
+    public class MoveDemo : OgreWindow
     {
         public AnimationState mAnimationState = null; //The AnimationState the moving object
         float mDistance = 0.0f;              //The distance the object has left to travel
@@ -19,7 +20,7 @@ namespace Quickstart2010
         float mWalkSpeed = 50.0f;  // The speed at which the object is moving
 
 
-        public void CreateSceneManager()
+        public override void CreateSceneManager()
         {
             //ROBOT
             Entity ent = Program.mEngine.SceneMgr.CreateEntity("Robot", "robot.mesh");
@@ -52,14 +53,15 @@ namespace Quickstart2010
             mWalkList.AddLast(new Vector3(0.0f, 0.0f, 25.0f));
 
             // Set idle animation
-            mAnimationState = Program.mEngine.SceneMgr.GetEntity("Robot").GetAnimationState("Idle");
+            mAnimationState = Program.mEngine.SceneMgr.GetEntity("Robot").GetAnimationState("Walk");
             mAnimationState.Loop = true;
             mAnimationState.Enabled = true;
         }
 
-        protected void CreateInputHandler()
+        protected override void CreateInputHandler()
         {
-
+            base.CreateInputHandler();
+            this.Root.FrameStarted += new FrameListener.FrameStartedHandler(FrameStarted);
         }
 
         protected bool nextLocation()
@@ -69,8 +71,24 @@ namespace Quickstart2010
 
         bool FrameStarted(FrameEvent evt)
         {
+            if (!mWalking)
+            //either we've not started walking or reached a way point
+            {
+                //check if there are places to go
+                if (nextLocation())
+                {
+                    LinkedListNode<Vector3> tmp;
 
+                    //Start the walk animation
+                    mAnimationState = mEntity.GetAnimationState("Walk");
+                    mAnimationState.SetLoop(true);
+                    mAnimationState.SetEnabled(true);
+                    mWalking = true;
 
+                    //Update the destination using the walklist.
+
+                }//if(nextLocation())
+            }
             return true;
         }
 

@@ -21,7 +21,6 @@ namespace Quickstart2010
         private Light mLight2;
 
         //////////////////////////////////////////////////////////////////////////
-        AnimationState mAnimationState = null; //The AnimationState the moving object
         float mDistance = 0.0f;              //The distance the object has left to travel
         Vector3 mDirection = Vector3.ZERO;   // The direction the object is moving
         Vector3 mDestination = Vector3.ZERO; // The destination the object is moving towards
@@ -119,7 +118,7 @@ namespace Quickstart2010
             // update the state manager, this will automatically update the active state
             mStateMgr.Update(0);
             //Update the Animation State.
-            win.mAnimationState.AddTime(0.001f * mWalkSpeed / 20);
+            win.mAnimationState.AddTime(0.01f * mWalkSpeed / 20);
         }
 
         /************************************************************************/
