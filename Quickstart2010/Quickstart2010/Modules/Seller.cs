@@ -1,10 +1,8 @@
 using System;
 using Mogre;
-using Buyer;
 
-namespace Seller
+namespace Quickstart2010.Modules
 {
-
     public class Seller
     {
         // Constantes
@@ -15,10 +13,12 @@ namespace Seller
         // Attributs
         int price;
         int nbRemainingItems;
+        public Vector2 position;
 
         // Constructeur
-        public Seller(int _price)
+        public Seller(Vector2 _position, int _price)
         {
+            position = _position;
             price = initPrice;
             nbRemainingItems = initNbItems;
         }
