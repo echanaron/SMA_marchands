@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                 %
+%    Rapport de projet de modélisation de système multi-agents    %
+%                                                                 %
+%    Rédaction commencée le 18 décembre 2014                      %
+%    v0.0                                                         %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%============================%
+%         Paramètres         %
+%============================%
+
+\documentclass[12pt,a4paper]{article}
+
+% Polices & encodage  
+% ------------------
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}  % Automatique avec fourier, donc inutile ici
+\usepackage{fourier}
+\usepackage[scaled=0.875]{helvet}
+\usepackage{courier}
+
+% Typographie
+% -----------
+\usepackage[french]{babel}
+\usepackage{listings}
+\lstset{
+    aboveskip=.5cm, belowskip=.7cm,
+	frame=lines,
+	tabsize=4,
+	basicstyle=\ttfamily
+	}
+
+% Marges
+% ------
+\usepackage[margin=3cm]{geometry}
+\reversemarginpar
+
+% Affichage
+% ---------
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
+\usepackage[final]{pdfpages}
+
+% Commandes et environnements personnalisés
+% -----------------------------------------
+\newcommand{\link}[1]{\texttt{#1}} % Liens internet ; syntaxe : \link{lien_internet}
+
+
+
+
+%===========================%
+%          Contenu          %
+%===========================%
+
+\begin{document}
+
+\input{page_de_garde}
+
+\section*{Introduction}
+
+Le présent rapport explique le fonctionnement du logiciel et explique comment l'utiliser.
+
+\tableofcontents
+\newpage
+
+
+\section{Modélisation}
+\input{1__modelisation}
+
+\section{Mode d'emploi}
+\input{2__mode_d_emploi}
+
+\section*{Bilan}
+
+Nous avons implémenté tous ce qui était imposé par la consigne, notamment à propos de la modélisation 3D (sources de lumière ambiante, transformations des modèles\dots).
+
+Les améliorations suivantes sont possibles :
+
+\end{document}
