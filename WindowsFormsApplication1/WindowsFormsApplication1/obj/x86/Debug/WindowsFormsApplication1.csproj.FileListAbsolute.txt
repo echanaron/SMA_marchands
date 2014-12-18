@@ -1,0 +1,11 @@
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\x86\Debug\WindowsFormsApplication1.exe.config
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\x86\Debug\WindowsFormsApplication1.exe
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\x86\Debug\WindowsFormsApplication1.pdb
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\x86\Debug\Mogre.dll
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\x86\Debug\MOIS.dll
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+c:\users\koalaviril\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\KoalaViril\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.ProjetSMA.resources
